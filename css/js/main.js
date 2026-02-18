@@ -1,68 +1,74 @@
-console.log("JS Loaded");
+document.addEventListener("DOMContentLoaded", () => {
 
+    const pantry = [];
 
-const API_KEY = 'ef00566b36744d018f4952a7ee6c078a'; 
-const pantryList = [];
+    const input = document.getElementById("ingredient-input");
+    const addBtn = document.getElementById("add-btn");
+    const pantryList = document.getElementById("pantry-list");
+    const searchBtn = document.getElementById("search-recipes-btn");
+    const recipeResults = document.getElementById("recipe-results");
 
-const addBtn = document.getElementById('add-btn');
-const searchBtn = document.getElementById('search-recipes-btn');
-const ingredientInput = document.getElementById('ingredient-input');
-const pantryUL = document.getElementById('pantry-list');
-const recipeContainer = document.getElementById('recipe-results');
+    function renderPantry() {
+        pantryList.innerHTML = pantry
+            .map((item, index) => `
+                <li>
+                    ${item}
+                    <button onclick="removeIngredient(${index})">❌</button>
+                </li>
+            `).join("");
+    }
 
-// Add Ingredient
-addBtn.addEventListener('click', () => {
-    const value = ingredientInput.value.trim();
-
-    if (value !== '') {
-        pantryList.push(value);
-        ingredientInput.value = '';
+    window.removeIngredient = function(index) {
+        pantry.splice(index, 1);
         renderPantry();
     }
-});
 
-// Render Pantry List
-function renderPantry() {
-    pantryUL.innerHTML = pantryList
-        .map(item => `<li>${item}</li>`)
-        .join('');
-}
+    addBtn.addEventListener("click", () => {
+        const value = input.value.trim();
+        if (value !== "") {
+            pantry.push(value);
+            input.value = "";
+            renderPantry();
+        }
+    });
 
-// Fetch Recipes
-async function getRecipes() {
-    if (pantryList.length === 0) {
-        alert("Please add at least one ingredient.");
-        return;
-    }
+    input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            addBtn.click();
+        }
+    });
 
-    const ingredients = pantryList.join(',');
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=6&apiKey=${API_KEY}`;
-
-    try {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error("API request failed");
+    searchBtn.addEventListener("click", () => {
+        if (pantry.length === 0) {
+            alert("Please add ingredients first.");
+            return;
         }
 
-        const data = await response.json();
-        displayRecipes(data);
+        showMockRecipes();
+    });
 
-    } catch (error) {
-        console.error("Error fetching recipes:", error);
-        recipeContainer.innerHTML = "<p>Unable to fetch recipes. Check API key.</p>";
+    function showMockRecipes() {
+        const mockRecipes = [
+            {
+                title: "Garlic Chicken Bowl",
+                image: "https://via.placeholder.com/250"
+            },
+            {
+                title: "Fresh Garden Salad",
+                image: "https://via.placeholder.com/250"
+            },
+            {
+                title: "Pasta Primavera",
+                image: "https://via.placeholder.com/250"
+            }
+        ];
+
+        recipeResults.innerHTML = mockRecipes.map(recipe => `
+            <div class="recipe-card">
+                <img src="${recipe.image}" alt="${recipe.title}">
+                <h3>${recipe.title}</h3>
+            </div>
+        `).join("");
     }
-}
 
-// Display Recipes
-function displayRecipes(recipes) {
-    recipeContainer.innerHTML = recipes.map(recipe => `
-        <div class="recipe-card">
-            <img src="${recipe.image}" alt="${recipe.title}">
-            <h3>${recipe.title}</h3>
-            <p>Uses ${recipe.usedIngredientCount} of your ingredients</p>
-        </div>
-    `).join('');
-}
-
-searchBtn.addEventListener('click', getRecipes);
+});
