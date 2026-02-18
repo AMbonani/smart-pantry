@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("JS Loaded!"); // Confirm JS runs
 
-    const pantry = [];
+    // Load pantry from localStorage or start empty
+    const pantry = JSON.parse(localStorage.getItem("pantry")) || [];
 
     const input = document.getElementById("ingredient-input");
     const addBtn = document.getElementById("add-btn");
@@ -19,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button onclick="removeIngredient(${index})">❌</button>
                 </li>
             `).join("");
+
+        // Save pantry to localStorage whenever it changes
+        localStorage.setItem("pantry", JSON.stringify(pantry));
     }
 
     // Remove ingredient
@@ -74,5 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
     });
 
+    // Initial render to show saved pantry items
+    renderPantry();
+
 });
+
 
