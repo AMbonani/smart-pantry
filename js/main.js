@@ -54,15 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const mockRecipes = [
             {
                 title: "Garlic Chicken Bowl",
-                image: "https://images.unsplash.com/photo-1604908177529-5e9a77c09b71?auto=format&fit=crop&w=400&q=80"
+                image: "https://cooking.nytimes.com/recipes/1015290-garlicky-chicken-with-lemon-anchovy-sauce?algo=cooking_search_relevance_metric_ios_and_web&fellback=false&imp_id=1519839394525107&req_id=6280930603588698&surface=cooking-search&variant=0_relevance_reranking"
             },
             {
                 title: "Fresh Garden Salad",
-                image: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=400&q=80"
+                image: "https://cooking.nytimes.com/recipes/1025526-garden-salad?q=garden%20salad"
             },
             {
                 title: "Pasta Primavera",
-                image: "https://images.unsplash.com/photo-1617196033376-3d53d75e0a21?auto=format&fit=crop&w=400&q=80"
+                image: "https://cooking.nytimes.com/recipes/1025478-pasta-primavera"
             }
         ];
 
