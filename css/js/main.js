@@ -1,3 +1,6 @@
+console.log("JS Loaded");
+
+
 const API_KEY = 'ef00566b36744d018f4952a7ee6c078a'; 
 const pantryList = [];
 
