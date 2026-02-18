@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Show recipes (mock data with real images)
+    // Show recipes (mock data with picsum.photos images)
     searchBtn.addEventListener("click", () => {
         if (pantry.length === 0) {
             alert("Please add ingredients first.");
@@ -54,15 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const mockRecipes = [
             {
                 title: "Garlic Chicken Bowl",
-                image: "https://cooking.nytimes.com/recipes/1015290-garlicky-chicken-with-lemon-anchovy-sauce?algo=cooking_search_relevance_metric_ios_and_web&fellback=false&imp_id=1519839394525107&req_id=6280930603588698&surface=cooking-search&variant=0_relevance_reranking"
+                image: "https://picsum.photos/400/250?random=1"
             },
             {
                 title: "Fresh Garden Salad",
-                image: "https://cooking.nytimes.com/recipes/1025526-garden-salad?q=garden%20salad"
+                image: "https://picsum.photos/400/250?random=2"
             },
             {
                 title: "Pasta Primavera",
-                image: "https://cooking.nytimes.com/recipes/1025478-pasta-primavera"
+                image: "https://picsum.photos/400/250?random=3"
             }
         ];
 
@@ -75,3 +75,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
