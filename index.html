@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Pantry Architect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Smart Pantry Architect</h1>
-        <p>Reduce waste. Eat well.</p>
-    </header>
 
-    <main>
-        <section id="pantry-input">
-            <input type="text" id="ingredient-input" placeholder="Enter ingredient (e.g. Chicken)">
-            <button id="add-btn">Add to Pantry</button>
-            <ul id="pantry-list"></ul>
-            <button id="search-recipes-btn">Find Recipes</button>
-        </section>
+<header>
+    <h1>Smart Pantry Architect</h1>
+    <p>Reduce waste. Eat well.</p>
+</header>
 
-        <section id="recipe-results">
-            </section>
-    </main>
+<main>
+    <section id="pantry-input">
+        <input type="text" id="ingredient-input" placeholder="Enter ingredient (e.g. Chicken)">
+        <button id="add-btn">Add to Pantry</button>
 
-    <script src="js/main.js" type="module"></script>
+        <ul id="pantry-list"></ul>
+
+        <button id="search-recipes-btn">Find Recipes</button>
+    </section>
+
+    <section id="recipe-results">
+        <!-- Recipes will appear here -->
+    </section>
+</main>
+
+<!-- Link JavaScript -->
+<script src="js/main.js"></script>
+
 </body>
 </html>
